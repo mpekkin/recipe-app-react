@@ -14,12 +14,23 @@ const RecipeCard:React.FC<RecipeProps> = ({ recipe }: RecipeProps) => {
     return (
         <div className='page-container'>
             <div className="recipe-card">
-                <TextField 
+                {/* <TextField 
+                    sx={{
+                        width: { sm: 200, md: 300 },
+                        "& .MuiInputBase-root": {
+                            height: 80
+                        }
+                    }}
                     id="standard-basic" 
                     label="Recipe name" 
                     variant="standard"
                     value={recipe.name}
-                />
+                /> */}
+                <input 
+                placeholder="Reseptin nimi"
+                value={recipe.name}
+                >
+                </input>
                 <h2>Ingredients</h2>
                 <ul>
                     {recipe.ingredients.map((ingredient: IngredientsItem) => 

@@ -1,4 +1,10 @@
+/* Font */
 
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 /* Header */
 .header {
   margin: 0;
@@ -14,15 +20,16 @@
   float: left;
   color: white;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.3rem;
+  margin-left: 1rem;
   text-decoration: none;
-  font-size: 1.5rem;
-  line-height: 2.5rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
   border-radius: 5%;
 }
 
 .header a.logo {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -48,10 +55,13 @@
   width: 100vmax;
   height: 100vh;
   margin-top: 6rem;
+  margin-bottom: 6rem;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
+
+/* Recipes */
 
 .recipe-card {
   margin: 1rem;
@@ -87,8 +97,23 @@
   width: 100%;
 }
 
+.recipe-card input {
+  font-family: "Lato", sans-serif;
+  color: #2a4fb4;
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
 
-/* footer */
+.recipe-card input:focus {
+  border-bottom: 2px solid #2a4fb4;
+}
+
+/* Footer */
 
 .page-footer {
   flex: 0 0 auto;
