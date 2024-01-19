@@ -5,7 +5,7 @@
   overflow: hidden;
   background-color: #E6B230;
   padding: 1rem 1rem;
-  position: fixed;
+  flex: 0 0 auto;
   top: 0;
   width: 100%;
 }
@@ -32,13 +32,68 @@
 }
 
 .header a.active {
-  background-color: #3060E6;
+  background-color: #2a4fb4;
   color: white;
 }
 
 .header-right {
   float: right;
   margin-right: 3rem;
+}
+
+/* page content */
+
+.page-container {
+  display: flex;
+  width: 100vmax;
+  height: 100vh;
+  margin-top: 6rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.recipe-card {
+  margin: 1rem;
+  padding: 2rem;
+  text-align: left;
+  width: 30%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+.recipe-card p {
+  margin: 0;
+}
+
+.recipe-card ol {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #2a4fb4;
+}
+
+.recipe-card ul {
+  font-size: 1.5rem;
+  color:#A68C4C;
+}
+
+.recipe-card li {
+  margin: 0.5rem;
+}
+
+.single-line {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+
+/* footer */
+
+.page-footer {
+  flex: 0 0 auto;
+  background-color:white;
+  text-align: center;
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
