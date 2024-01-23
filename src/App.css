@@ -3,17 +3,21 @@
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: normal; 
 }
+
 /* Header */
+
 .header {
   margin: 0;
   overflow: hidden;
   background-color: #E6B230;
   padding: 1rem 1rem;
-  flex: 0 0 auto;
+/*   flex: 0 0 auto; */
   top: 0;
   width: 100%;
+  position: fixed;
+  z-index: 100;
 }
 
 .header a {
@@ -53,12 +57,14 @@ body {
 .page-container {
   display: flex;
   width: 100vmax;
-  height: 100vh;
+  height: fit-content;
   margin-top: 6rem;
   margin-bottom: 6rem;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+ 
+  
 }
 
 /* Recipes */
@@ -70,6 +76,7 @@ body {
   width: 30%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
+  z-index: 50;
 }
 
 .recipe-card p {
@@ -116,10 +123,21 @@ body {
 /* Footer */
 
 .page-footer {
-  flex: 0 0 auto;
+  position: fixed;
+  bottom: 0; 
   background-color:white;
-  text-align: center;
+  width: 100%;
+  text-align: right;
+  
+  
 }
+
+.page-footer p {
+  margin: 0;
+  padding-right: 2rem;
+}
+
+
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (max-width: 500px) {

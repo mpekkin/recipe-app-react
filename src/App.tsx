@@ -4,19 +4,20 @@ import React from 'react'
 import Header from './components/Header'
 import RecipeCard from './components/RecipeCard'
 import Footer from './components/Footer'
+import { uid } from 'uid'
 
 export interface IngredientsItem {
-  id: number,
+  id: string,
   text: string
 }
 
 export interface PreparationItem {
-  id: number,
+  id: string,
   text: string
 }
 
 export interface RecipeItem {
-  id: number,
+  id: string,
   name: string,
   ingredients: IngredientsItem[],
   preparation: PreparationItem[]
@@ -28,33 +29,33 @@ export interface RecipeItem {
 function App() {
 
 const [recipe, setRecipe] = useState({
-  id: 123,
+  id: uid(),
   name: "Marjarahka",
   ingredients: [
     {
-      id: 1,
+      id: uid(),
       text: "1 prk vaahtoutuvaa vaniljakastike"
     },
     {
-      id: 2,
+      id: uid(),
       text: "1 prk maitorahkaa"
     },
     {
-      id: 3,
+      id: uid(),
       text: "5 dl marjoja"
     },
     {
-      id: 4,
+      id: uid(),
       text: "1 rkl sokeria"
     }
   ],
   preparation: [
     {
-      id: 1,
+      id: uid(),
       text: "Vaahdota vaniljakastike paksuksi vaahdoksi. Lisää rahka ja sekoita tasaiseksi."
     },
     {
-      id: 2,
+      id: uid(),
       text: "Sekoita joukkoon kohmeiset marjat ja makeuta sokerilla."
     }
   ]
@@ -64,6 +65,7 @@ const [recipe, setRecipe] = useState({
       <Header/> 
       <RecipeCard
       recipe={recipe}
+      setRecipe={setRecipe}
       />
       <Footer/>
     </>
