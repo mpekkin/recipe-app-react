@@ -92,6 +92,8 @@ body {
 .recipe-card ul {
   font-size: 1.5rem;
   color:#A68C4C;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .recipe-card li {
@@ -102,6 +104,11 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+.recipe-card .button-div {
+  text-align: center;
+  width: 100%
 }
 
 .recipe-card input {
@@ -116,7 +123,32 @@ body {
   font-weight: bold;
 }
 
+#subtitle-input {
+  font-family: "Lato", sans-serif;
+  color: #2a4fb4;
+  width:auto;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 1.3rem;
+  margin: 0.4rem;
+  margin-top: 1rem;
+}
+
+.recipe-card span #subtitle-input {
+  display: inline-block;
+  border: none;
+  border-bottom: 1px solid black;
+/*   min-width: 50px; 
+  max-width: 200px; */
+}
+
 .recipe-card input:focus {
+  border-bottom: 2px solid #2a4fb4;
+}
+
+#subtitle-input:focus {
   border-bottom: 2px solid #2a4fb4;
 }
 

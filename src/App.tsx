@@ -1,14 +1,21 @@
 import { useState } from 'react'
+import { useImmer } from 'use-immer'
 import './App.css'
 import React from 'react'
 import Header from './components/Header'
-import RecipeCard from './components/RecipeCard'
+import RecipeCard from './components/recipe card/RecipeCard'
 import Footer from './components/Footer'
 import { uid } from 'uid'
 
-export interface IngredientsItem {
+export interface contentItem {
   id: string,
   text: string
+}
+
+export interface IngredientsItem {
+  subtitle: string | undefined,
+  id: string,
+  content: contentItem[]
 }
 
 export interface PreparationItem {
@@ -24,8 +31,6 @@ export interface RecipeItem {
 }
 
 
-
-
 function App() {
 
 const [recipe, setRecipe] = useState({
@@ -33,22 +38,39 @@ const [recipe, setRecipe] = useState({
   name: "Marjarahka",
   ingredients: [
     {
+      subtitle: undefined,
       id: uid(),
-      text: "1 prk vaahtoutuvaa vaniljakastike"
+      content:[
+        {
+          id: uid(),
+          text: "1 prk vaahtoutuvaa vaniljakastike"
+        },
+        {
+          id: uid(),
+          text: "1 prk maitorahkaa"
+        },
+        {
+          id: uid(),
+          text: "5 dl marjoja"
+        },
+        {
+          id: uid(),
+          text: "1 rkl sokeria"
+        }
+      ]
     },
     {
+      subtitle: "Koristeluun",
       id: uid(),
-      text: "1 prk maitorahkaa"
-    },
-    {
-      id: uid(),
-      text: "5 dl marjoja"
-    },
-    {
-      id: uid(),
-      text: "1 rkl sokeria"
+      content: [
+        {
+          id: uid(),
+          text: "Mintunlehtiä"
+        }
+      ]
     }
   ],
+
   preparation: [
     {
       id: uid(),
@@ -60,6 +82,8 @@ const [recipe, setRecipe] = useState({
     }
   ]
 })
+
+
   return (
     <>
       <Header/> 
