@@ -5,19 +5,19 @@ import { IngredientsItem, PreparationItem, RecipeItem, contentItem } from "../..
 
 
 interface RecipeProps {
-    ingredientId: string
+    itemId: string
     sectionId: string
     clickHandler: Function
 }
 
-export const DeleteButton:React.FC<RecipeProps> = ({ ingredientId, sectionId, clickHandler }: RecipeProps) => {
+export const DeleteButton:React.FC<RecipeProps> = ({ itemId, sectionId, clickHandler }: RecipeProps) => {
 
     return (
         <>
             <IconButton 
                 aria-label="delete"
                 value={sectionId}
-                onClick={(e) => clickHandler(ingredientId, e.currentTarget.value)}
+                onClick={(e) => clickHandler(itemId, e.currentTarget.value)}
                 >
                 <ClearIcon />
             </IconButton>

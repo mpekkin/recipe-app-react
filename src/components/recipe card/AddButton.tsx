@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { uid } from "uid";
 import IconButton from '@mui/material/IconButton'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -11,7 +11,15 @@ interface RecipeProps {
     clickHandler: Function
 }
 
+    const subtitleWasDeleted = () => {
+
+    }
+
 export const AddButton:React.FC<RecipeProps> = ({ sectionId, buttonText, clickHandler }: RecipeProps) => {
+
+    const [show, setShow] = useState("true")
+
+
   
     return (
         <>
@@ -29,3 +37,5 @@ export const AddButton:React.FC<RecipeProps> = ({ sectionId, buttonText, clickHa
         </>
     )
 }
+
+//export default {AddButton, subtitleWasDeleted}

@@ -8,6 +8,8 @@ import { Button } from "@mui/material";
 import { IngredientsItem, PreparationItem, RecipeItem } from "../../App";
 import { RecipeName } from "./RecipeName";
 import { Ingredients } from "./Ingredients";
+import { Preparation } from "./Preparation";
+import { TagsMenu } from "./TagsMenu";
 
 interface RecipeProps {
     recipe: RecipeItem
@@ -28,22 +30,7 @@ const RecipeCard:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProps) =>
     })
 } */
 
-const handleAddStep = () => {
-    let newPrep = recipe.preparation
-    newPrep.push({id: uid(), text: ""})
-    setRecipe((draft: RecipeItem): RecipeItem => {
-        draft.preparation = newPrep
-        return draft
-    })
-}
 
-const handleDeleteStep = (targetId: string) => {
-    const stepDeleted = recipe.preparation.filter(step => step.id !== targetId)
-    setRecipe({
-        ...recipe,
-        preparation: stepDeleted
-    })
-}
 
 
 
@@ -51,40 +38,23 @@ const handleDeleteStep = (targetId: string) => {
         <div className='page-container'>
             <div className="recipe-card">
                 <RecipeName
-                recipe={recipe}
-                setRecipe={setRecipe}
+                    recipe={recipe}
+                    setRecipe={setRecipe}
                 />
                 <Ingredients
-                recipe={recipe}
-                ingredients={recipe.ingredients}
-                setRecipe={setRecipe}
+                    recipe={recipe}
+                    ingredients={recipe.ingredients}
+                    setRecipe={setRecipe}
                 />
-                <h2>Preparation</h2>
-                <ol>
-                    {recipe.preparation.map((step: PreparationItem) => 
-                        <li key={step.id}>
-                            <div className="single-line">
-                                <TextField fullWidth multiline
-                                value={step.text} />
-                                <IconButton 
-                                    aria-label="delete"
-                                    onClick={() => {handleDeleteStep(step.id)}}>
-                                    <ClearIcon />
-                                </IconButton>
-                            </div>
-                    </li>
-                )}
-                </ol>
-                <IconButton 
-                    aria-label='add' 
-                    size="small" 
-                    style={{marginLeft: "1rem", padding: 0}}
-                    onClick={() => {handleAddStep()}}>
-                        <AddCircleIcon/>
-                            <p style={{margin: "0.7rem"}}>
-                                Add step
-                            </p>
-                </IconButton> <br/>
+                <Preparation
+                    recipe={recipe}
+                    setRecipe={setRecipe}
+                />
+                <br/>
+                <TagsMenu
+                    recipe={recipe}
+                    setRecipe={setRecipe}
+                />
                 <div className="button-div">
                 <Button variant="contained" color="success" size="medium">
                     Save

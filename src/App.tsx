@@ -26,6 +26,7 @@ export interface PreparationItem {
 export interface RecipeItem {
   id: string,
   name: string,
+  tags: Array<string>
   ingredients: IngredientsItem[],
   preparation: PreparationItem[]
 }
@@ -33,9 +34,10 @@ export interface RecipeItem {
 
 function App() {
 
-const [recipe, setRecipe] = useState({
+const [recipe, setRecipe] = useState<RecipeItem>({
   id: uid(),
   name: "Marjarahka",
+  tags: [],
   ingredients: [
     {
       subtitle: undefined,
