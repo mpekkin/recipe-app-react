@@ -10,18 +10,36 @@ interface RecipeProps {
 
 export const TagsMenu:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProps) => {
 
+    const tagItems = ["Appetizers", "Main dishes", "Desserts", "Salads", "Soups", "Breakfast", "Snacks", "Beverages", "Cakes", "Pies", "Muffins", "Bread", "Cookies"]
+
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
-    };
+    }
+
+    const handleAddTag = (event) => {
+        setAnchorEl(null)
+        const { value } = event?.currentTarget.dataset       
+        const tagsCopy = [...recipe.tags]
+        if (tagsCopy.includes(value) == false) {
+            tagsCopy.push(value)
+            setRecipe({
+            ...recipe,
+            tags: tagsCopy
+            })
+        }
+
+    }
+
     const handleClose = () => {
-        setAnchorEl(null);
+        setAnchorEl(null)
     }
 
     return (
         <div id="tags-menu">
         <Button
+        size="medium"
         variant="contained"
           id="basic-button"
           aria-controls={open ? 'basic-menu' : undefined}
@@ -40,19 +58,9 @@ export const TagsMenu:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProp
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={handleClose}>Appetizer</MenuItem>
-          <MenuItem onClick={handleClose}>Main dish</MenuItem>
-          <MenuItem onClick={handleClose}>Dessert</MenuItem>
-          <MenuItem onClick={handleClose}>Salad</MenuItem>
-          <MenuItem onClick={handleClose}>Soup</MenuItem>
-          <MenuItem onClick={handleClose}>Breakfast/Snack/Supper</MenuItem>
-          <MenuItem onClick={handleClose}>Beverage</MenuItem>
-          <Divider/>
-          <MenuItem onClick={handleClose}>Cake</MenuItem>
-          <MenuItem onClick={handleClose}>Pie</MenuItem>
-          <MenuItem onClick={handleClose}>Muffin</MenuItem>
-          <MenuItem onClick={handleClose}>Bread</MenuItem>
-          <MenuItem onClick={handleClose}>Cookies</MenuItem>
+            {tagItems.map((tagName, index) =>
+               <MenuItem key={index} data-value={tagName} onClick={(e) => handleAddTag(e)}>{tagName}</MenuItem> 
+            )}
         </Menu>
       </div>
     )

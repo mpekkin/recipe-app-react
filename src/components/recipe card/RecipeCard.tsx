@@ -10,6 +10,7 @@ import { RecipeName } from "./RecipeName";
 import { Ingredients } from "./Ingredients";
 import { Preparation } from "./Preparation";
 import { TagsMenu } from "./TagsMenu";
+import { TagDisplay } from "./TagDisplay";
 
 interface RecipeProps {
     recipe: RecipeItem
@@ -51,10 +52,15 @@ const RecipeCard:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProps) =>
                     setRecipe={setRecipe}
                 />
                 <br/>
+                <TagDisplay
+                    recipe={recipe}
+                    setRecipe={setRecipe}
+                />
                 <TagsMenu
                     recipe={recipe}
                     setRecipe={setRecipe}
                 />
+
                 <div className="button-div">
                 <Button variant="contained" color="success" size="medium">
                     Save
