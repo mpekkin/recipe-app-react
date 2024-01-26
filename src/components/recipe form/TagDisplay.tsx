@@ -1,6 +1,7 @@
 import React from "react";
 import { RecipeItem } from "../../App";
 import { Chip } from "@mui/material";
+import { TagsMenu } from "./TagsMenu";
 
 interface RecipeProps {
     recipe: RecipeItem
@@ -32,7 +33,6 @@ export const TagDisplay:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipePr
                     onDelete={() => handleDeleteTag(tag)} 
                 />           
             )}
-
         </div>
     )
 }

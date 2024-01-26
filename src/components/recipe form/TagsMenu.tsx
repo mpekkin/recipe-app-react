@@ -1,6 +1,6 @@
 import React from "react";
 import { RecipeItem } from "../../App";
-import { Button, Divider, Menu, MenuItem } from "@mui/material";
+import { Button, Chip, Divider, Menu, MenuItem } from "@mui/material";
 
 
 interface RecipeProps {
@@ -14,7 +14,7 @@ export const TagsMenu:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProp
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
         setAnchorEl(event.currentTarget);
     }
 
@@ -29,7 +29,6 @@ export const TagsMenu:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProp
             tags: tagsCopy
             })
         }
-
     }
 
     const handleClose = () => {
@@ -37,18 +36,18 @@ export const TagsMenu:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProp
     }
 
     return (
-        <div id="tags-menu">
-        <Button
+        <div id="tags-display">
+
+        <Chip
+        label="+ Add tag"
         size="medium"
-        variant="contained"
-          id="basic-button"
-          aria-controls={open ? 'basic-menu' : undefined}
+        color="primary"
+        aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
-          + Add tags
-        </Button>
+        onClick={(e) => handleClick(e)}  
+        />
+
         <Menu
           id="basic-menu"
           anchorEl={anchorEl}
@@ -59,7 +58,7 @@ export const TagsMenu:React.FC<RecipeProps> = ({ recipe, setRecipe }: RecipeProp
           }}
         >
             {tagItems.map((tagName, index) =>
-               <MenuItem key={index} data-value={tagName} onClick={(e) => handleAddTag(e)}>{tagName}</MenuItem> 
+               <MenuItem key={index} data-value={tagName} onClick={(e) => handleAddTag(e)}>{tagName}</MenuItem>
             )}
         </Menu>
       </div>

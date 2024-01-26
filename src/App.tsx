@@ -1,11 +1,18 @@
 import { useState } from 'react'
-import { useImmer } from 'use-immer'
 import './App.css'
 import React from 'react'
 import Header from './components/Header'
-import RecipeCard from './components/recipe card/RecipeCard'
+import RecipeCard from './components/recipe form/RecipeCard'
 import Footer from './components/Footer'
 import { uid } from 'uid'
+import { HomePage } from './components/HomePage'
+import { RouterProvider } from 'react-router'
+import router from "./components/routes"
+import { createBrowserRouter } from 'react-router-dom'
+import Root from './components/Root'
+import { ErrorPage } from './components/ErrorPage'
+import { RecipeDisplay } from './components/RecipeDisplay'
+
 
 export interface contentItem {
   id: string,
@@ -45,7 +52,7 @@ const [recipe, setRecipe] = useState<RecipeItem>({
       content:[
         {
           id: uid(),
-          text: "1 prk vaahtoutuvaa vaniljakastike"
+          text: "1 prk vaahtoutuvaa vaniljakastiketta"
         },
         {
           id: uid(),
@@ -85,17 +92,51 @@ const [recipe, setRecipe] = useState<RecipeItem>({
   ]
 })
 
+/* const router = createBrowserRouter([
+  {
+      path: "/",
+      element: <Root/>,
+      errorElement: <ErrorPage/>,
+      children: [
+          {
+              path: "home",
+              element: <HomePage recipe={recipe} setRecipe={setRecipe}/>
+          },
+          {
+              path: "recipes/new",
+              element: <RecipeCard recipe={recipe} setRecipe={setRecipe}/>
+              
+          }
+      ],
+  },
+]) */
 
   return (
-    <>
-      <Header/> 
-      <RecipeCard
+    <div className='page-container'>
+    <Header/>
+    <RecipeDisplay
+    recipe={recipe}
+    />
+    <Footer/>
+    </div>
+  )
+  }
+
+export default App
+
+/* <RouterProvider router={router}/> */
+
+
+/*     <div className='page-container'>
+       <Header/> 
+       <RecipeCard
+        recipe={recipe}
+        setRecipe={setRecipe}
+      />
+      <HomePage
       recipe={recipe}
       setRecipe={setRecipe}
       />
       <Footer/>
-    </>
-  )
-}
 
-export default App
+    </div> */
